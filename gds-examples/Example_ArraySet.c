@@ -16,7 +16,7 @@ static void PrintArraySet(ArraySet* set)
 	printf("Size: %d Capacity: %d Objects: ", set->size, set->capacity);
 	for (i = 0; i < set->size; i++)
 	{
-		printf("%d ", *(int*)(set->objects[i].value));
+		printf("%d ", *(int*)(set->objects[i].data));
 	}
 	putchar('\n');
 }

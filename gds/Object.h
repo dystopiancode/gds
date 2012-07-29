@@ -26,9 +26,9 @@ int Object_Compare(const Object* element1, const Object* element2);
 Object* Object_Copy(const Object* element);
 Object* Object_Destroy(Object* element);
 Interface* Interface_Create(void* (*Copy)(const void*),
-							void* (*Destroy)(void*),
-							int   (*Compare)(const void*,const void*),
-							void* (*GetType)(void));
+			    void* (*Destroy)(void*),
+			    int   (*Compare)(const void*,const void*),
+			    void* (*GetType)(void));
 
 
 

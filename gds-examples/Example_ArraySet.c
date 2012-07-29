@@ -31,8 +31,7 @@ void ArraySet_Example1(void)
 	/*Creates 2 ArraySet capable of holding 10 objects*/
 	I_Integer = Interface_Create(&Integer_Copy
 								,&Integer_Destroy,
-								 &Integer_Compare,
-								 (void*)NULL);
+								 &Integer_Compare);
 	s1 = ArraySet_Create(10);
 
 	/*Adds the objects {-3,5,2,0,-14,3}*/

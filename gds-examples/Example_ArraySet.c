@@ -8,20 +8,9 @@
 #include<stdio.h>
 #include"Examples.h"
 #include"ArraySet.h"
+#include"SampleObject.h"
 
-#define NAME_SIZE 50
-
-typedef struct
-{
-	int value;
-}Integer;
-
-Integer* Integer_Create(int value);
-Integer* Integer_Copy(const Integer* integer);
-Integer* Integer_Destroy(Integer* integer);
-int Integer_Compare(Integer* i1, Integer *i2);
-
-void PrintArraySet(ArraySet* set)
+static void PrintArraySet(ArraySet* set)
 {
 	int i;
 	printf("Size: %d Capacity: %d Objects: ", set->size, set->capacity);
@@ -99,29 +88,4 @@ void ArraySet_Example1(void)
  Size: 0 Capacity: 10 Objects:
  */
 
-Integer* Integer_Create(int value)
-{
-	Integer *i = NULL;
-	i = malloc(sizeof(Integer));
-	i->value = value;
-	return i;
-}
 
-Integer* Integer_Copy(const Integer* integer)
-{
-	Integer *i = NULL;
-	i = malloc(sizeof(Integer));
-	i->value = integer->value;
-	return i;
-}
-
-Integer* Integer_Destroy(Integer* integer)
-{
-	free(integer);
-	return NULL;
-}
-
-int Integer_Compare(Integer* i1, Integer* i2)
-{
-	return (*(int*)(i1->value) - *(int*)(i2->value));
-}

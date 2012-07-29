@@ -75,14 +75,12 @@ Object* Object_Destroy(Object* object)
  *	NULL
  */
 Interface* Interface_Create(void* (*Copy)(const void*),
-			    void* (*Destroy)(void*),
-			    int   (*Compare)(const void*,const void*),
-			    void* (*GetType)(void))
+			    			void* (*Destroy)(void*),
+			    			int   (*Compare)(const void*,const void*))
 {
 	Interface *interface = malloc(sizeof(Interface));
 	interface->Copy = Copy;
 	interface->Destroy = Destroy;
 	interface->Compare = Compare;
-	interface->GetType = GetType;
 	return interface;
 }

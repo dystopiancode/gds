@@ -28,7 +28,7 @@ all: gds-examples
 gds-examples: $(OBJS) $(USER_OBJS)
 	@echo 'Building target: $@'
 	@echo 'Invoking: GCC C Linker'
-	gcc -L"/home/bogdan/Ubuntu One/Eclipse/gds/Debug" -o "gds-examples" $(OBJS) $(USER_OBJS) $(LIBS)
+	gcc -L"/home/bogdan/Ubuntu One/Eclipse/gds/gds/Debug" -o "gds-examples" $(OBJS) $(USER_OBJS) $(LIBS)
 	@echo 'Finished building target: $@'
 	@echo ' '
 

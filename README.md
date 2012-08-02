@@ -8,11 +8,11 @@ ArraySet
 
 You can obtain more information about the library at:
 
-The structure of the library:
+>The structure of the library:<br/>
 http://dystopiancode.blogspot.ro/2012/07/the-generic-data-structures-library.html
 
-How to define a GDS object:
+>How to define a GDS object:<br/>
 http://dystopiancode.blogspot.ro/2012/08/gds-defining-object.html
 
-Operating with the ArraySet data structure:
+>Operating with the ArraySet data structure:<br/>
 http://dystopiancode.blogspot.ro/2012/07/gds-arrayset-data-structure.html

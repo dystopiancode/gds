@@ -23,28 +23,30 @@ static void PrintArraySet(ArraySet* set)
 
 void ArraySet_Example1(void)
 {
-
+	/*We declare 2 ArraySet data structures*/
 	ArraySet* s1 = NULL;
 	ArraySet* s2 = NULL;
-	Interface *I_Integer = NULL;
-
-	/*Creates 2 ArraySet capable of holding 10 objects*/
+	/*The interface for the objects*/
+	Interface* I_Integer = NULL;
+	/*Creating the interface*/
 	I_Integer = Interface_Create(&Integer_Copy
 								,&Integer_Destroy,
 								 &Integer_Compare);
+	/*Creating the first set*/
 	s1 = ArraySet_Create(10);
 
-	/*Adds the objects {-3,5,2,0,-14,3}*/
+	/*We shall add 6 objects who will symbolize the set {-3,5,2,0,-14,3}*/
 	ArraySet_AddObject(s1, Object_Create(Integer_Create(-3),I_Integer));
 	ArraySet_AddObject(s1, Object_Create(Integer_Create(5),I_Integer));
 	ArraySet_AddObject(s1, Object_Create(Integer_Create(2),I_Integer));
 	ArraySet_AddObject(s1, Object_Create(Integer_Create(0),I_Integer));
 	ArraySet_AddObject(s1, Object_Create(Integer_Create(-14),I_Integer));
 	ArraySet_AddObject(s1, Object_Create(Integer_Create(3),I_Integer));
+
 	puts("After adding objects to s1: ");
 	PrintArraySet(s1);
 
-	/*Tries to add duplicate values*/
+	/*Trying to add duplicate values*/
 	ArraySet_AddObject(s1, Object_Create(Integer_Create(-3),I_Integer));
 	ArraySet_AddObject(s1, Object_Create(Integer_Create(5),I_Integer));
 	puts("After adding duplicate values to s1: ");
@@ -53,7 +55,7 @@ void ArraySet_Example1(void)
 	/*Creates a new ArraySet as a copy of the first ArraySet*/
 	s2 = ArraySet_Copy(s1);
 
-	/*Removes some objects*/
+	/*Removing some objects from the first set*/
 	ArraySet_RemoveObject(s1, Object_Create(Integer_Create(-3),I_Integer));
 	ArraySet_RemoveObject(s1, Object_Create(Integer_Create(0),I_Integer));
 	ArraySet_RemoveObject(s1, Object_Create(Integer_Create(-14),I_Integer));
@@ -67,7 +69,7 @@ void ArraySet_Example1(void)
 	puts("After resizing s1 ");
 	PrintArraySet(s1);
 
-	/*After removing all objects*/
+	/*After removing all objects from the second set*/
 	puts("After removing all objects from s2: ");
 	ArraySet_RemoveAll(s2);
 	PrintArraySet(s2);

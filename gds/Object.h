@@ -11,17 +11,17 @@ typedef struct
 	/*A pointer to a destructor-like function*/
 	void* (*Destroy)(void*);
 	/*A pointer to a compare function*/
-	int   (*Compare)(const void*,const void*);
-}Interface;
+	int (*Compare)(const void*, const void*);
+} Interface;
 
 /*Contains the attributes and the behaviors of the object*/
 typedef struct
 {
 	/*Contains the object's data*/
-	void	   *data;
+	void *data;
 	/*Contains pointers to the object's function*/
-	Interface  *interface;
-}Object;
+	Interface *interface;
+} Object;
 
 /*
  * Description:
@@ -44,7 +44,7 @@ Object* Object_Create(void* value, void* interface);
  *  >0 - object1 is greater than object2
  *  <0 - object2 is greater than object1
  */
-int     Object_Compare(const Object* element1, const Object* element2);
+int Object_Compare(const Object* element1, const Object* element2);
 /*
  * Description:
  *  Creates a hard copy of an object structure
@@ -77,8 +77,8 @@ Object* Object_Destroy(Object* element);
  *	NULL
  */
 Interface* Interface_Create(void* (*Copy)(const void*),
-			    			void* (*Destroy)(void*),
-			    			int   (*Compare)(const void*,const void*));
+							void* (*Destroy)(void*),
+							int (*Compare)(const void*, const void*));
 /*
  * Description:
  * 	Destroys an Interface structure

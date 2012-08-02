@@ -21,6 +21,106 @@ static void PrintArraySet(ArraySet* set)
 	putchar('\n');
 }
 
+void ArraySet_Example2(void)
+{
+	ArraySet* s1 = NULL;
+	ArraySet* s2 = NULL;
+	ArraySet* r = NULL;
+	Interface *I_Integer = NULL;
+	bool result;
+
+	/*Creating the Interface*/
+	I_Integer = Interface_Create(&Integer_Copy,
+								 &Integer_Destroy,
+								 &Integer_Compare);
+
+	/*Creating the first ArraySet and adding objects*/
+	s1 = ArraySet_Create(10);
+	ArraySet_AddObject(s1, Object_Create(Integer_Create(-3),I_Integer));
+	ArraySet_AddObject(s1, Object_Create(Integer_Create(5),I_Integer));
+	ArraySet_AddObject(s1, Object_Create(Integer_Create(2),I_Integer));
+	ArraySet_AddObject(s1, Object_Create(Integer_Create(0),I_Integer));
+	ArraySet_AddObject(s1, Object_Create(Integer_Create(-14),I_Integer));
+	ArraySet_AddObject(s1, Object_Create(Integer_Create(3),I_Integer));
+
+	/*Creates the second ArraySet and adding objects*/
+	s2 = ArraySet_Create(10);
+	ArraySet_AddObject(s2, Object_Create(Integer_Create(0),I_Integer));
+	ArraySet_AddObject(s2, Object_Create(Integer_Create(1),I_Integer));
+	ArraySet_AddObject(s2, Object_Create(Integer_Create(2),I_Integer));
+	ArraySet_AddObject(s2, Object_Create(Integer_Create(0),I_Integer));
+	ArraySet_AddObject(s2, Object_Create(Integer_Create(-14),I_Integer));
+	ArraySet_AddObject(s2, Object_Create(Integer_Create(3),I_Integer));
+
+	/*Prints the sets*/
+	puts("Set S1");
+	PrintArraySet(s1);
+	puts("Set S2");
+	PrintArraySet(s2);
+
+	/*Checks if the set are equal*/
+	result = ArraySet_Equals(s1, s2);
+	if (result == true)
+	{
+		puts("S1 and S2 are equal");
+	}
+	else
+	{
+		puts("S1 and S2 are  not equal");
+	}
+
+	/*Checks if S1 is a subset of S2*/
+	result = ArraySet_IsSubset(s1, s2);
+	if (result == true)
+	{
+		puts("S1 is a subset of S2");
+	}
+	else
+	{
+		puts("S1 is not a subset of S2");
+	}
+
+	/*Computes the reunion of the two sets*/
+	r = ArraySet_Reunion(s1, s2);
+	puts("Reunion(S1,S2)");
+	PrintArraySet(r);
+	r = ArraySet_Destroy(r);
+
+	/*Computes the intersection of the two sets*/
+	puts("Intersection(S1,S2)");
+	r = ArraySet_Intersection(s1, s2);
+	PrintArraySet(r);
+	r = ArraySet_Destroy(r);
+
+	/*Computes the difference between S1 and S2*/
+	r = ArraySet_Difference(s1, s2);
+	puts("Difference(S1,S2)");
+	PrintArraySet(r);
+	r = ArraySet_Destroy(r);
+
+	/*Computes the difference between S2 and S1*/
+	r = ArraySet_Difference(s2, s1);
+	puts("Difference(S2,S1");
+	PrintArraySet(r);
+	r = ArraySet_Destroy(r);
+}
+/*Output:
+	Set S1
+	Size: 6 Capacity: 10 Elements: -3 5 2 0 -14 3
+	Set S2
+	Size: 5 Capacity: 10 Elements: 0 1 2 -14 3
+	S1 and S2 are  not equal
+	S1 is not a subset of S2
+	Reunion(S1,S2)
+	Size: 7 Capacity: 11 Elements: -3 5 2 0 -14 3 1
+	Intersection(S1,S2)
+	Size: 4 Capacity: 10 Elements: 2 0 -14 3
+	Difference(S1,S2)
+	Size: 2 Capacity: 10 Elements: -3 5
+	Difference(S2,S1
+	Size: 1 Capacity: 10 Elements: 1
+*/
+
 void ArraySet_Example1(void)
 {
 	/*We declare 2 ArraySet data structures*/

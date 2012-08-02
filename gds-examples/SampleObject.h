@@ -10,8 +10,6 @@
 
 #include<stdlib.h>
 
-#define NAME_SIZE 50
-
 typedef struct
 {
 	int value;

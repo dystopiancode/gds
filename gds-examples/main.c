@@ -8,6 +8,6 @@
 
 int main(void)
 {
-	ArraySet_Example1();
+	ArraySet_Example2();
 	return 0;
 }
